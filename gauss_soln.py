@@ -11,7 +11,7 @@ def gaussian(x, peak, center, sigma):
 # make an array that goes from -6 to +6 with elements every 0.01
 min = -6
 max = 6
-dx = 0.01
+dx = 0.001
 nel = (max - min) / dx + 1
 x = np.arange(nel) * dx + min
 
@@ -28,12 +28,12 @@ ax.plot(x, g, color='red')
 
 # integrate f and g over the full range of x
 f_int = np.sum(f)
-print("function area", f_int)
+print("function area", f_int*dx)
 g_int = np.sum(g)
-print("gaussian area", g_int)
+print("gaussian area", g_int*dx)
 
 # consider the fraction of the total area over a given width
-nel = max / dx + 1
+nel = np.int(max / dx + 1)
 width = np.arange(nel) * dx
 f_frac = np.zeros(nel)
 g_frac = np.zeros(nel)
